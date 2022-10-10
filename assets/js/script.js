@@ -1,3 +1,40 @@
+var startButton = document.getElementById('start-btn')
+    startButton.addEventListener('click', startQuiz)
+var questionContainerEl = document.getElementById('question-container')
+var startTitleEl = document.getElementById('start-title')
+var startTextEl = document.getElementById('start-text')
+
+// starts the quiz
+function startQuiz () {
+    console.log('Started.')
+    startButton.classList.add('hide')
+    startTitleEl.classList.add('hide')
+    startTextEl.classList.add('hide')
+    questionContainerEl.classList.remove('hide')
+    
+
+}
+
+// pulls up the next question after previous answer is selected
+function displayNextQuestion () {
+
+}
+
+function selectAnswer () {
+
+}
+
+function enterName () {
+
+}
+
+function displayScore () {
+
+}
+
+
+
+
 
 
 var questions = [
