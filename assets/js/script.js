@@ -1,8 +1,12 @@
-var startButton = document.getElementById('start-btn')
+const startButton = document.getElementById('start-btn')
     startButton.addEventListener('click', startQuiz)
-var questionContainerEl = document.getElementById('question-container')
-var startTitleEl = document.getElementById('start-title')
-var startTextEl = document.getElementById('start-text')
+const questionContainerEl = document.getElementById('question-container')
+const startTitleEl = document.getElementById('start-title')
+const startTextEl = document.getElementById('start-text')
+const questionEl = document.getElementById('question')
+const answerButtonsEl = document.getElementById('answer-buttons')
+
+let shuffledQuestions, currentQuestionIndex
 
 // starts the quiz
 function startQuiz () {
@@ -10,15 +14,22 @@ function startQuiz () {
     startButton.classList.add('hide')
     startTitleEl.classList.add('hide')
     startTextEl.classList.add('hide')
+    questionOrder = questions
+    currentQuestionIndex = 0
     questionContainerEl.classList.remove('hide')
-    
-
+    setNextQuestion()
 }
 
 // pulls up the next question after previous answer is selected
-function displayNextQuestion () {
+function setNextQuestion () {
+    showQuestion(questionOrder[currentQuestionIndex])
 
 }
+
+function showQuestion(question) {
+    questionEl.innerText = question.question
+    question.answers.forEach(answer 
+
 
 function selectAnswer () {
 

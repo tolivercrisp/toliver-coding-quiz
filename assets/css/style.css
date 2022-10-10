@@ -64,6 +64,7 @@ body.wrong {
 
 .btn:hover {
   border-color: black;
+  cursor: pointer;
 }
 
 .btn.correct {
