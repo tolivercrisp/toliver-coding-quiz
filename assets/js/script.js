@@ -7,7 +7,9 @@ const questionEl = document.getElementById('question')
 const answerButtonsEl = document.getElementById('answer-buttons')
 const resultEl = document.getElementById('result')
 const endGameEl = document.getElementById('end-game')
-const endGameScore = document.getElementById('user-score')
+let endGameScore = document.getElementById('user-score')
+let scoreNumber = document.getElementById('score-number')
+
 
 let score = 0
 
@@ -77,8 +79,13 @@ function selectAnswer (e) {
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
     if (selectedButton.dataset.correct) {
-        score++
-        endGameScore.append(score)
+        score++ 
+        scoreNumber.innerText = score
+        resultEl.classList.remove('hide')
+        resultEl.innerText = 'Correct!'
+    } else {
+        resultEl.classList.remove('hide')
+        resultEl.innerText = 'Wrong, try again.'
     }
     setClassColor(document.body, correct)
     Array.from(answerButtonsEl.children).forEach(button => {
@@ -104,18 +111,14 @@ function setClassColor(element, correct) {
 function clearClassColor(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
+    resultEl.classList.add('hide')
 }
 
 function endGame () {
     questionContainerEl.classList.add('hide')
     endGameEl.classList.remove('hide')
-    endGameScore.append(score)
+    
     document.getElementById('countdown').innerHTML= '0'
-    score = Math.floor(Math.random() * 11);
-
-
-
-
 }
 
 function enterName () {
