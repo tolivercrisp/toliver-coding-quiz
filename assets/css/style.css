@@ -4,12 +4,13 @@
 }
 
 :root {
-    --normal-color: purple;
-    --wrong-color: red;
-    --correct-color: green;
+    --normal: blue;
+    --correct: green;
+    --wrong: red;
 }
 
 body {
+    background-color: var(--normal);
     padding: 0;
     display: flex;
     width: 100vw;
@@ -18,24 +19,33 @@ body {
     align-items: center;
 }
 
-#start-title {
+body.correct {
+    background-color: var(--correct);
+}
+
+body.wrong {
+    background-color: var(--wrong);
+}
+
+.start-title {
     font-size: 30px;
     font-weight: bold;
     padding: 20px;
     
 }
 
-#start-text {
-    font-size: ;
+.start-text {
+    font-size: 20px;
 }
 
 body.correct {
-  background-color: var(--correct-color);
+    --hue: var(--hue-correct);
+}
+  
+body.wrong {
+    --hue: var(--hue-wrong);
 }
 
-body.wrong {
-  background-color: var(--wrong-color);
-}
 
 .container {
   width: 800px;
@@ -55,7 +65,7 @@ body.wrong {
 
 .btn {
   border: 1px solid white;
-  background-color: purple;
+  background-color: blue;
   border-radius: 5px;
   padding: 5px 10px;
   color: white;
@@ -67,19 +77,16 @@ body.wrong {
   cursor: pointer;
 }
 
-.btn.correct {
-  background-color: var(--correct-color);
-  color: black;
-}
-
-.btn.wrong {
-  background-color: var(--wrong-color);
-}
-
 .start-btn, .next-btn {
   font-size: 1.5rem;
   font-weight: bold;
   padding: 10px 20px;
+}
+
+.result {
+    color: gray;
+    border-top: 1px solid gray;
+    padding: 5px;
 }
 
 .controls {
