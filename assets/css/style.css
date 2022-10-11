@@ -19,6 +19,18 @@ body {
     align-items: center;
 }
 
+.countdown {
+    font-size: 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 60px;
+    justify-content: start;
+    align-items: flex-start;
+    margin-right: 30px;
+
+}
+
 body.correct {
     background-color: var(--correct);
 }

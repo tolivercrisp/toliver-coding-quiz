@@ -6,15 +6,32 @@ const startTextEl = document.getElementById('start-text')
 const questionEl = document.getElementById('question')
 const answerButtonsEl = document.getElementById('answer-buttons')
 const resultEl = document.getElementById('result')
+const endGameEl = document.getElementById('end-game')
+const endGameScore = document.getElementById('user-score')
 
+let score = 0
 
 let questionOrder, currentQuestionIndex
 
+function timer(){
+    let sec = 120;
+    var timer = setInterval(function(){
+        document.getElementById('countdown').innerHTML= sec;
+        sec--;
+        if (sec < 0 || startButton.innerText === 'Restart') {
+            clearInterval(timer);
+            endGame();
+        }
+    }, 1000);
+}
+
 startButton.addEventListener('click', startQuiz)
+startButton.addEventListener('click', timer)
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
 })
+
 
 // starts the quiz
 function startQuiz () {
@@ -49,7 +66,7 @@ function showQuestion(question) {
 }
 
 function resetState() {
-    clearStatusClass(document.body)
+    clearClassColor(document.body)
     nextButton.classList.add('hide')
     while (answerButtonsEl.firstChild) {
         answerButtonsEl.removeChild(answerButtonsEl.firstChild)
@@ -59,9 +76,13 @@ function resetState() {
 function selectAnswer (e) {
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
-    setStatusClass(document.body, correct)
+    if (selectedButton.dataset.correct) {
+        score++
+        endGameScore.append(score)
+    }
+    setClassColor(document.body, correct)
     Array.from(answerButtonsEl.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct)
+        setClassColor(button, button.dataset.correct)
     })
     if (questionOrder.length > currentQuestionIndex + 1) {
         nextButton.classList.remove('hide')
@@ -69,17 +90,10 @@ function selectAnswer (e) {
         startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
       }
-    if (selectedButton.dataset.correct) {
-        resultEl.classList.remove('hide')
-        resultEl.innerText = 'Correct!'
-    }  else {
-        resultEl.classList.remove('hide')
-        resultEl.innerText = 'Wrong, try again.'
-    }
 }
    
-function setStatusClass(element, correct) {
-    clearStatusClass(element)
+function setClassColor(element, correct) {
+    clearClassColor(element)
     if (correct) {
       element.classList.add('correct')
     } else {
@@ -87,9 +101,21 @@ function setStatusClass(element, correct) {
     }
   }
   
-function clearStatusClass(element) {
+function clearClassColor(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
+}
+
+function endGame () {
+    questionContainerEl.classList.add('hide')
+    endGameEl.classList.remove('hide')
+    endGameScore.append(score)
+    document.getElementById('countdown').innerHTML= '0'
+    score = Math.floor(Math.random() * 11);
+
+
+
+
 }
 
 function enterName () {

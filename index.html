@@ -7,12 +7,15 @@
     <title>Toliver's Coding Quiz</title>
 </head>
 <body>
+  <div class="header">
+    <div id="countdown" class="countdown">120</div>
+  </div>
     <div class="container">
       <div id="start-title" class="start-title">Coding Quiz Challenge</div>
-  <div id="start-text" class="start-text">
-    Try to answer the following code-related questions within the time limit.
-    Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-  </div>
+      <div id="start-text" class="start-text">
+        Try to answer the following code-related questions within the time limit.
+        Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+      </div>
         <div id="question-container" class="hide">
           <div id="question">Question</div>
           <div id="answer-buttons" class="btn-grid">
@@ -26,6 +29,10 @@
         <div class="controls">
           <button id="start-btn" class="start-btn btn">Start</button>
           <button id="next-btn" class="next-btn btn hide">Next</button>
+          <div id="end-game" class="end-game hide">
+            <h1>Game Over.</h1>
+          </div>
+          <p id="user-score">Your score: </p>
         </div>
       </div>
     
