@@ -9,6 +9,11 @@ const resultEl = document.getElementById('result')
 const endGameEl = document.getElementById('end-game')
 let endGameScore = document.getElementById('user-score')
 let scoreNumber = document.getElementById('score-number')
+const reloadEl = document.getElementById('reload')
+const usernameContainerEl = document.getElementById('username-container')
+const scoreButton = document.getElementById('score-btn')
+const scoreCard = document.getElementById('view-score')
+const highscoreText = document.getElementById('highscore-text')
 
 
 let score = 0
@@ -29,6 +34,15 @@ function timer(){
 
 startButton.addEventListener('click', startQuiz)
 startButton.addEventListener('click', timer)
+
+// Couldn't get the highscore button to work
+/* scoreButton.addEventListener('click', () => {
+    saveUsername()
+    scoreCard.classList.remove('hide')
+    highscoreText.innerText = localStorage.getItem('highScore[]')
+    
+}) */
+
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
@@ -81,11 +95,9 @@ function selectAnswer (e) {
     if (selectedButton.dataset.correct) {
         score++ 
         scoreNumber.innerText = score
-        resultEl.classList.remove('hide')
-        resultEl.innerText = 'Correct!'
+        
     } else {
-        resultEl.classList.remove('hide')
-        resultEl.innerText = 'Wrong, try again.'
+        sec -= 10
     }
     setClassColor(document.body, correct)
     Array.from(answerButtonsEl.children).forEach(button => {
@@ -115,19 +127,53 @@ function clearClassColor(element) {
 }
 
 function endGame () {
+    startButton.classList.add('hide')
     questionContainerEl.classList.add('hide')
     endGameEl.classList.remove('hide')
-    
+    reloadEl.classList.remove('hide')
     document.getElementById('countdown').innerHTML= '0'
+    saveUsername()
 }
 
-function enterName () {
 
+// Couldn't get the highscore storage to work
+
+/* function saveUsername () {
+    usernameContainerEl.classList.remove('hide')
+    const username = document.getElementById('username')
+    const saveScoreBtn = document.getElementById('saveScoreBtn')
+    const finalScore = scoreNumber
+    const mostRecentScore = finalScore
+
+    const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+    const MAX_HIGH_SCORES = 5;
+
+    finalScore.innerText = mostRecentScore;
+
+    username.addEventListener('keyup', () => {
+        saveScoreBtn.disabled = !username.value;
+});
+
+    saveHighScore = (e) => {
+        e.preventDefault();
+
+        const scoreObject = {
+            score: mostRecentScore,
+            name: username.value,
+        };
+        highScores.push(scoreObject);
+        highScores.sort((a, b) => b.score - a.score);
+        highScores.splice(5);
+
+        localStorage.setItem('highScores', JSON.stringify(highScores));
+        window.location.assign('/');
+};
 }
+*/
 
-function displayScore () {
 
-}
+
 
 const questions = [
     {

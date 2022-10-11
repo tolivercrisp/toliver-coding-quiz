@@ -95,6 +95,11 @@ body.wrong {
   padding: 10px 20px;
 }
 
+.score-btn {
+font-size: 1.5rem;
+  padding: 5px 10px;
+}
+
 .result {
     color: gray;
     border-top: 1px solid gray;
@@ -105,6 +110,16 @@ body.wrong {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.username-container {
+    margin-left: 40px;
+}
+
+.view-score {
+    justify-content: center;
+    align-items: center;
 }
 
 

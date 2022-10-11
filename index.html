@@ -25,16 +25,35 @@
             <button class="btn">Answer 4</button>
             <div id="result" class="result hide">Result</div>
           </div>
+          <p id="user-score">Your score: <span id="score-number">0<d/span></p>
         </div>
+
         <div class="controls">
           <button id="start-btn" class="start-btn btn">Start</button>
           <button id="next-btn" class="next-btn btn hide">Next</button>
+          <button id="score-btn" class="score-btn btn hide">Highscores</button>
           <div id="end-game" class="end-game hide">
             <h1>Game Over.</h1>
+          <input type="button" id="reload" class="reload btn hide" value="Restart" onClick="window.location.reload(true)">
           </div>
-          <p id="user-score">Your score: <span id="score-number">0</span></p>
+          <div id="username-container" class="username-container hide">
+            <label for="name">Save your highscore:</label>
+            <input type="text" id="username" name="name" placeholder="username">
+            <button
+              type="submit"
+              class="btn"
+              id="saveScoreBtn"
+              onclick="saveHighScore(event)"
+             disabled
+            >Save</button>
+          </div>          
+        </div>
+        <div id="view-score" class="view-score hide">
+          <h1>Highscore List</h1>
+          <p id="highscore-text" class="highscore-text"></p>
         </div>
       </div>
+      
     
     
     <script src="./assets/js/script.js"></script>
